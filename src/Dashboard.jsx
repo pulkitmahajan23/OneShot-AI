@@ -1,27 +1,43 @@
-import React from 'react';
-import Plot from 'react-plotly.js';
+import './App.css';
+import React from "react";
+import Chart from "react-apexcharts";
 
 class Dashboard extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        options: {
+          series: [6, 5, 6, 5, 3, 3],
+          labels: [ "Computer Science", "Information Technology", "Electrical and Electronics", "Mechanical Engineering", "Biotech Engineering", "Aeronautical Engineering"],
+          title: {
+            text: "Courses",
+            align: 'center',
+            margin: 20,
+            offsetX: 0,
+            offsetY: 0,
+            floating: false,
+            style: {
+              fontSize:  '40px',
+              fontWeight:  'bold',
+              fontFamily: 'Patrick Hand SC',
+              color:  '#263238'
+            },
+        }
+        
+        }
+      };
+    }
     render() {
-        return (
-          
-            <Plot
-                data={[
-                    {
-                        values: [2, 4, 3],
-                        type: "pie",
-                        labels: ["Maharashtra", "Tamil Nadu", "West Bengal"],
-                        textinfo: "label+percent",
-                        textposition: "outside",
-                        automargin: true
-                    },
-                ]}
-                layout={ {width: 400, height: 400, margin: {"t": 0, "b": 0, "l": 0, "r": 0}, title: 'State'} }
-            />
-        );
-      }
-}
-
-
-
+      return (
+        <div id="pieChart">
+          <Chart
+            options={this.state.options}
+            series={this.state.options.series}
+            type="pie"
+            width="50%"
+          />
+        </div>
+      );
+    }
+  }
 export default Dashboard;
